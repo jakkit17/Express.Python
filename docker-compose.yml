@@ -1,0 +1,54 @@
+version: '3'
+
+volumes:
+  # api_source:
+  # pg_data:
+  # dbeaver_data:
+  web_source:
+
+services:
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.python  # Use Python backend Dockerfile
+  #   # volumes:
+  #   #   - api_source:/home/dev/source
+  #   restart: on-failure
+  #   command: ["python", "backend/app.py"]  # Flask API entry point
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "5000:5000"  # Flask backend port
+
+  # postgres:
+  #   image: postgres:12
+  #   restart: always
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_USER: usr
+  #     POSTGRES_PASSWORD: 12345678
+  #     POSTGRES_DB: pg_db
+  #   ports:
+  #     - 5432:5432
+
+  # dbeaver:
+  #   image: dbeaver/cloudbeaver
+  #   restart: always
+  #   volumes:
+  #     - dbeaver_data:/opt/cloudbeaver/workspace
+  #   ports:
+  #     - 8978:8978
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.next  # Python frontend Dockerfile
+    # volumes:
+    #   - web_source:/home/dev/source
+    restart: on-failure
+    command: ["python", "frontend/app.py"]  # Flask frontend
+    ports:
+      - "8000:8000"  # Django frontend (or change to "5001:5000" for Flask)
+    # depends_on:
+    #   - api
