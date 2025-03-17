@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Flexbox Website</title>
+    <title>About Us</title>
     <style>
         /* Flexbox styles */
         body {
@@ -58,13 +58,13 @@
 <body>
 
 <div class="container">
-    <h1>Welcome to My Simple Website</h1>
-    <p>This is the home page, created using Flask and Flexbox.</p>
+    <h1>About {{ company_name }}</h1>
+    <p>{{ about_text }}</p>
+    <p>Founded in {{ year_founded }}</p>
     
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="/game">Game</a>
     </div>
 </div>
 

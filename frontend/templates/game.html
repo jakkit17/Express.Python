@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Flexbox Website</title>
+    <title>Guess the Number Game</title>
     <style>
         /* Flexbox styles */
         body {
@@ -53,18 +53,51 @@
         .nav-links a:hover {
             text-decoration: underline;
         }
+
+        .flash {
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .flash.success {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .flash.warning {
+            background-color: #f39c12;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Welcome to My Simple Website</h1>
-    <p>This is the home page, created using Flask and Flexbox.</p>
-    
+    <h1>Guess the Number Game</h1>
+    <p>I'm thinking of a number between 1 and 100. Can you guess it?</p>
+
+    <form method="POST" action="/game?number={{ secret_number }}">
+        <input type="number" name="guess" placeholder="Enter your guess" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="/game">Game</a>
+        <a href="/game">Restart Game</a>
     </div>
 </div>
 
