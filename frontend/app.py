@@ -41,6 +41,10 @@ def game():
 
     return render_template("game.html", secret_number=secret_number)
 
+@app.route('/main1')
+def main1():
+    return render_template("main1.html")
+
 # Start the Flask application
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
