@@ -3,31 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Flexbox Website</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Data Submitted</title>
     <style>
-        /* Flexbox styles */
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            margin: 0;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
             background-color: white;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
             width: 80%;
             max-width: 500px;
         }
@@ -60,19 +53,13 @@
 <body>
 
 <div class="container">
+    <h1>Thank you for submitting your information!</h1>
+    <p>Name: {{ name }}</p>
+    <p>Email: {{ email }}</p>
 
-    <h1 class="text-2xl font-bold bg-red-300 mb-6 text-center">Add New User</h1>
-    <img class="size-20 shadow-xl rounded-md" alt="" src="https://tailwindcss.com/_next/static/media/cover.de1997f7.png" />
-
-    <h1>Welcome to My Simple Website</h1>
-    <p>This is the home page, created using Flask and Flexbox.</p>
-    qqqqqqqqq
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="/game">Game</a>
-        <a href="/test">Test</a>
-        <a href="/login">Login</a>
     </div>
 </div>
 
