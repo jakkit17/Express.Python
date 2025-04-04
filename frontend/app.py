@@ -110,6 +110,34 @@ def check_user_credentials(username, password):
 def test():
     return render_template("test.html")
 
+
+# ================================================================
+# Route for login_1
+# ----------------------------------------------------------------
+
+@app.route('/login_1')
+def login_1():
+    return render_template("login_1.html")
+
+@app.route('/check_login', methods=['GET'])
+def check_login():
+    if request.method == 'GET':
+        username = request.args.get('username')
+        password = request.args.get('password')
+
+        # Check user credentials from the XML file
+        if username == "admin" and password == "12345":
+            return redirect(url_for('success'))
+        else:
+            alert = "Incorrect Username or Password"
+            return render_template("login_1.html", alert=alert)
+
+
+@app.route('/success')
+def success():
+    return render_template("success.html")
+
+
 # Start the Flask application
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
