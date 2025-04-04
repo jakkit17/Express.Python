@@ -5,14 +5,18 @@ import xml.etree.ElementTree as ET  # Correct XML import
 app = Flask(__name__)
 app.secret_key = 'secret'  # For session and flash messages
 
-# ----------------------------------------------------------------
+
+# ================================================================
 # Route for the home page
+# ----------------------------------------------------------------
+
 @app.route('/')
 def home():
     return render_template("index.html")
 
-# ----------------------------------------------------------------
+# ================================================================
 # Route for the About page
+# ----------------------------------------------------------------
 @app.route('/about')
 def about():
     company_name = "Tech Innovations"
@@ -20,8 +24,9 @@ def about():
     about_text = "We are a technology company focused on innovation and sustainability."
     return render_template("about.html", company_name=company_name, year_founded=year_founded, about_text=about_text)
 
-# ----------------------------------------------------------------
+# ================================================================
 # Route for the Game page
+# ----------------------------------------------------------------
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     # Session to store the secret number
@@ -45,11 +50,15 @@ def game():
 
     return render_template("game.html", secret_number=secret_number)
 
+# ================================================================
+# Route for main1
 # ----------------------------------------------------------------
 @app.route('/main1')
 def main1():
     return render_template("main1.html")
 
+# ================================================================
+# Route for login
 # ----------------------------------------------------------------
 
 @app.route('/login')
@@ -93,6 +102,8 @@ def check_user_credentials(username, password):
         flash(f"Error: {e}", 'danger')
         return False
 
+# ================================================================
+# Route for test
 # ----------------------------------------------------------------
         
 @app.route('/test')
