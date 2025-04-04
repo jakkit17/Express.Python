@@ -49,6 +49,6 @@ services:
     restart: on-failure
     command: ["python", "frontend/app.py"]  # Flask frontend
     ports:
-      - "8000:8000"  # Django frontend (or change to "5001:5000" for Flask)
+      - "8001:8000"  # Django frontend (or change to "5001:5000" for Flask)
     # depends_on:
     #   - api
