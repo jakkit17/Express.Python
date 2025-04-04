@@ -5,12 +5,18 @@ import xml.etree.ElementTree as ET  # Correct XML import
 app = Flask(__name__)
 app.secret_key = 'secret'  # For session and flash messages
 
+# ================================================================
 # Route for the home page
+# ----------------------------------------------------------------
+
 @app.route('/')
 def home():
     return render_template("index.html")
 
+# ================================================================
 # Route for the About page
+# ----------------------------------------------------------------
+
 @app.route('/about')
 def about():
     company_name = "Tech Innovations"
@@ -18,7 +24,10 @@ def about():
     about_text = "We are a technology company focused on innovation and sustainability."
     return render_template("about.html", company_name=company_name, year_founded=year_founded, about_text=about_text)
 
+# ================================================================
 # Route for the Game page
+# ----------------------------------------------------------------
+
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     # Session to store the secret number
@@ -42,14 +51,20 @@ def game():
 
     return render_template("game.html", secret_number=secret_number)
 
+
+# ================================================================
+# Route for Test
+# ----------------------------------------------------------------
 @app.route('/test')
 def test():
     x = "test1"
     y = "test2"
     z = "test3"
     return render_template("test.html", x=x, y=y, z=z)
-# Start the Flask application
 
+# ================================================================
+# Route for show_data
+# ----------------------------------------------------------------
 @app.route('/show_data')
 def show_data():
 
@@ -59,6 +74,9 @@ def show_data():
 
 
 
+# ================================================================
+# Route for Login
+# ----------------------------------------------------------------
 @app.route('/login')
 def login():
     return render_template('Login.html')
@@ -100,15 +118,20 @@ def check_user_credentials(username, password):
         flash(f"Error: {e}", 'danger')
         return False
 
-# Success route
+
+# ================================================================
+# Route for Login Success
+# ----------------------------------------------------------------
 @app.route('/success')
 def success():
     return render_template('success.html')
 
 
 
-
+# ================================================================
 # Route to render the "Add User" form
+# ----------------------------------------------------------------
+
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     if request.method == 'POST':
@@ -131,7 +154,7 @@ def add_user():
 # Function to check if the username already exists in the XML file
 def check_username_exists(username):
     try:
-        tree = ET.parse('users.xml')
+        tree = ET.parse('Database_Users.xml')
         root = tree.getroot()
 
         for user in root.findall('user'):
@@ -166,7 +189,8 @@ def add_user_to_xml(username, password):
         flash(f"Error adding user to XML: {e}", 'danger')
 
 
-
+# ================================================================
 # Start the Flask application
+# ----------------------------------------------------------------
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
